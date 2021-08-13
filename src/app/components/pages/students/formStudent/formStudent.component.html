@@ -1,6 +1,94 @@
 <div class="addContainer">
-  <h1>
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis laudantium nihil fuga possimus fugit provident ipsam, amet illum quis commodi inventore autem saepe tempora repudiandae, fugiat ullam, rem doloribus numquam.
-  </h1>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Añadir Estudiante</mat-card-title>
+    </mat-card-header>
 
+    <form
+      class="register-form m-4"
+      [formGroup]="tableForm"
+      (ngSubmit)="(submit)"
+    >
+      <div class="row">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="name"
+            [errorStateMatcher]="matcher"
+            placeholder="Harry Potter"
+          />
+          <mat-icon matSuffix>face</mat-icon>
+          <mat-error *ngIf="tableForm.get('name')?.hasError('required')">
+            El nombre es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Patronus</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="patronus"
+            [errorStateMatcher]="matcher"
+            placeholder="stag"
+          />
+          <mat-error *ngIf="tableForm.get('patronus')?.hasError('required')">
+            El patronus es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Año de nacimiento</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="yearOfBirth"
+            [errorStateMatcher]="matcher"
+            placeholder="stag"
+          />
+          <mat-error *ngIf="tableForm.get('yearOfBirth')?.hasError('required')">
+            El año de nacimiento es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Enlace de foto</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="image"
+            [errorStateMatcher]="matcher"
+            placeholder="stag"
+          />
+          <mat-error *ngIf="tableForm.get('image')?.hasError('pattern')">
+            Introduce un link <strong>valido</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="example-button-row">
+            <button
+              mat-raised-button
+              color="primary"
+              [type]="submit"
+              [disabled]="!tableForm.valid"
+              (click)="confirmAdd()"
+            >
+              Salvar
+            </button>
+            <button
+              mat-raised-button
+              color="warn"
+              [mat-dialog-close]
+              tabindex="-1"
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-card>
 </div>
