@@ -1,7 +1,8 @@
+<app-spinner></app-spinner>
 <a6s-header (toogleSidebarForMe)="sideBarToggler()"></a6s-header>
-<mat-drawer-container>
+<mat-drawer-container [ngStyle]="{backgroundImage:'url(/assets/images/back.jpg)'}" >
   <mat-drawer mode="side" [opened]="sideBarOpen" >
-    <a6s-sidenav></a6s-sidenav>
+    <a6s-sidenav (toogleSidebarForMe)="sideBarToggler()"></a6s-sidenav>
    </mat-drawer>
    <mat-drawer-content>
      <router-outlet></router-outlet>

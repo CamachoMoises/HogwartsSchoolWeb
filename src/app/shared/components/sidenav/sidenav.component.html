@@ -1,9 +1,11 @@
 <mat-nav-list>
   <h2 matSubheader>Paginass</h2>
-  <a mat-list-item routerLink="/">home</a>
-  <a mat-list-item routerLink="/characters">Personajes</a>
-  <a mat-list-item routerLink="/students">Estudiantes</a>
-  <a mat-list-item routerLink="/staff">Profesores</a>
+  <a mat-list-item routerLink="/" (click)="closeSideBar()">home</a>
+  <a mat-list-item routerLink="/characters" (click)="closeSideBar()">Personajes</a>
+  <a mat-list-item routerLink="/students" (click)="closeSideBar()">Estudiantes</a>
+  <a mat-list-item routerLink="/staff" (click)="closeSideBar()">Profesores</a>
   <mat-divider></mat-divider>
-  <h2 matSubheader>Herramientas</h2>
+  <h2 matSubheader>----</h2>
+  <a mat-list-item routerLink="/about" (click)="closeSideBar()">Acerca de</a>
+
 </mat-nav-list>

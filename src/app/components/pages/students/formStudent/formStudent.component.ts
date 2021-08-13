@@ -48,10 +48,11 @@ export class FormStudentComponent implements OnInit {
   //creando los campos del formulario
   createContactForm(): FormGroup {
     const reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
+    const reg2 = '^[0-9]{3,4}$'
     return this.fb.group({
     name:[null, Validators.required],
     patronus:[null, Validators.required],
-    yearOfBirth:[null, Validators.required,],
+    yearOfBirth:[null, [Validators.required, Validators.pattern(reg2)]],
     image:[null, Validators.pattern(reg)],
     });
   }

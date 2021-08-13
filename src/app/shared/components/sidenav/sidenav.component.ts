@@ -22,4 +22,7 @@ export class SidenavComponent implements OnInit {
   toogleSideBar() {
     this.toogleSidebarForMe.emit();
   }
+  closeSideBar():void {
+    this.toogleSidebarForMe.emit();
+  }
 }

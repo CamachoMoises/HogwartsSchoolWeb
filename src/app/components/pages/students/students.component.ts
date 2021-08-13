@@ -44,7 +44,7 @@ export class StudentsComponent extends UnsubscribeOnDestroyAdapter implements On
   }
   addStudent(): void {
     const DialogRef = this.dialog.open(FormStudentComponent,{
-      width:'1300px',
+      width:'500px',
       data:{
         action:'add'
       }

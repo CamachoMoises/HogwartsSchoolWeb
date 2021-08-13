@@ -46,10 +46,13 @@
             matInput
             formControlName="yearOfBirth"
             [errorStateMatcher]="matcher"
-            placeholder="stag"
+            placeholder="1994"
           />
           <mat-error *ngIf="tableForm.get('yearOfBirth')?.hasError('required')">
             El año de nacimiento es <strong>requerido</strong>
+          </mat-error>
+          <mat-error *ngIf="tableForm.get('yearOfBirth')?.hasError('pattern')">
+            Introduce un link <strong>valido</strong>
           </mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="outline">
@@ -67,7 +70,7 @@
         </mat-form-field>
       </div>
       <div class="row">
-        <div class="col-12">
+        <div class="col-md-3 col-md-offset-3">
           <div class="example-button-row">
             <button
               mat-raised-button
