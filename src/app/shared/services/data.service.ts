@@ -21,5 +21,17 @@ export class DataService extends UnsubscribeOnDestroyAdapter {
       this.characterSubject.next(data);
     });
   }
+  async getStaffCharacters(): Promise<void>{
+    this.subs.sink = await this.http.get<Character[]>(this.urlAPI + '/staff').subscribe((data: Character[]) => {
+      console.log(data);
+      this.characterSubject.next(data);
+    });
+  }
+  async getStudentCharacter(): Promise<void>{
+    this.subs.sink = await this.http.get<Character[]>(this.urlAPI + '/students').subscribe((data: Character[])=>{
+      console.log(data);
+      this.characterSubject.next(data);
+    })
+  }
 
 }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../../../shared/services/data.service';
 import { Character } from '../../../shared/models/character';
 import { UnsubscribeOnDestroyAdapter } from '../../../shared/UnsubscribeOnDestroyAdapter';
@@ -12,25 +12,25 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.scss']
 })
-export class CharactersComponent extends UnsubscribeOnDestroyAdapter implements OnInit, AfterViewInit {
+export class CharactersComponent extends UnsubscribeOnDestroyAdapter implements OnInit {
   private paginator!: MatPaginator;
   today = new Date();
   year = this.today.getFullYear();
 
   @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
-  this.paginator = mp;
-  this.dataSource.paginator = this.paginator;
-}
+    this.paginator = mp;
+    this.dataSource.paginator = this.paginator;
+  }
   @ViewChild(MatSort) sort!: MatSort;
   dataSource!: MatTableDataSource<Character>;
-  displayedColumns: string[] = ['name','patronus','yearOfBirth', 'image' ]
+  displayedColumns: string[] = ['name', 'patronus', 'yearOfBirth', 'image']
   characters!: Character[];
   selected: boolean = false;
   houses: house[] = [
     { value: 'slytherin', viewValue: 'slytherin' },
     { value: 'gryffindor', viewValue: 'gryffindor' },
     { value: 'ravenclaw ', viewValue: 'ravenclaw ' },
-    { value: 'hufflepuff ', viewValue: 'hufflepuff '}
+    { value: 'hufflepuff ', viewValue: 'hufflepuff ' }
   ];
   constructor(private dataService: DataService) {
     super()
@@ -44,13 +44,10 @@ export class CharactersComponent extends UnsubscribeOnDestroyAdapter implements 
       this.dataSource.sort = this.sort;
     })
   }
-  ngAfterViewInit() {
-    console.log('dataSource');
-  }
   onChange(house: string): void {
     this.selected = true;
     console.log('Value', house);
-    this.dataService.getHouseCharacters(house)
+    this.dataService.getHouseCharacters(house);
 
   }
 
